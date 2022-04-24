@@ -52,8 +52,8 @@ this.element.onclick = function () {
 return false;
 };
 this.element.querySelector("p").innerHTML = this.state;
-if (wonGame()) return gameOver("The Winner is Player " + this.state);
-if (isDraw()) return gameOver ("It is A Draw");
+if (wonGame()) return gameOver("PLAY AGAIN, The Winner is Player, " + this.state);
+if (isDraw()) return gameOver ("PLAY AGAIN, It is A Draw");
 nextMove == "X" ? (nextMove = "O") : (nextMove = "X");
 }
 }
@@ -69,3 +69,18 @@ div.appendChild(document.createElement("p"));
 container.appendChild(div);
 squareArray.push(square);
 }
+
+const wrapper = document.querySelector(".wrapper"),
+form = wrapper.querySelectorAll(".form"),
+submitInput = form[0].querySelector('input[type="submit"]');
+
+function getDataForm(e){
+e.preventDefault ();
+
+let formData = new FormData (form[0]);
+alert (formData.get('userField')  + '-' + formData.get('userField2') );
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+submitInput.addEventListener('click',getDataForm, false);
+}, false);
